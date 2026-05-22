@@ -14,8 +14,8 @@ struct Line {
     b: f32,
     c: f32
 }
-// Finding cooefficients of linear equation Ax+By-C=0
-fn find_cooefficients(x1: f32, y1: f32, x2: f32, y2: f32) -> (f32, f32, f32){
+// Finding coefficients of linear equation Ax+By-C=0
+fn find_coefficients(x1: f32, y1: f32, x2: f32, y2: f32) -> (f32, f32, f32){
     return(y2 - y1, 
         x1 - x2, 
         x2*y1 - x1*y2);
@@ -81,7 +81,7 @@ fn main() {
         c: 0.0
     };
 
-    (main_line.a, main_line.b, main_line.c) = find_cooefficients(points_array[0], points_array[1], 
+    (main_line.a, main_line.b, main_line.c) = find_coefficients(points_array[0], points_array[1], 
         points_array[2], points_array[3]);
     println!("Main line have have coordinates ({},{}) и ({},{})",points_array[0], points_array[1], points_array[2], points_array[3]);
     
@@ -93,7 +93,7 @@ fn main() {
 
     for i in 1..file_lines.len() {
        
-        (segment_line.a, segment_line.b, segment_line.c) = find_cooefficients(points_array[i * 4], points_array[i * 4 + 1], 
+        (segment_line.a, segment_line.b, segment_line.c) = find_coefficients(points_array[i * 4], points_array[i * 4 + 1], 
             points_array[i * 4 + 2], points_array[i * 4 + 3]);
         let intersect_answer = find_intersection(main_line, segment_line); 
         println!("intersect_answer: {} {} {}", intersect_answer.0, intersect_answer.1, intersect_answer.2);
